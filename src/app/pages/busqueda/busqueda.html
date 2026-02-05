@@ -1,0 +1,67 @@
+<div class="animate-fade-in">
+  <!-- Hero Header -->
+  <div class="hero-wrapper">
+    <div class="banner-ghost"></div>
+    <div class="hero-banner" style="background: #000; height: 350px; border: 1px solid rgba(255,255,255,0.1);">
+      <div class="banner-content">
+        <h1>Buscador</h1>
+        <p>Encuentra rápidamente secciones, elementos y conceptos de diseño en nuestra arquitectura.</p>
+      </div>
+    </div>
+    <div class="banner-ghost"></div>
+  </div>
+
+  <div class="container">
+    <!-- Controles de Búsqueda -->
+    <div class="search-controls">
+      <div class="search-input-wrapper">
+        <div class="search-input-group">
+          <input type="text" placeholder="¿Qué estás buscando? (ej: menú, breadcrumbs...)" [(ngModel)]="query"
+            (keyup.enter)="doSearch()">
+          <button class="btn-pill" style="background: var(--primary); color: #fff;" (click)="doSearch()">Buscar</button>
+          <button class="btn-outline" style="padding: 14px 30px;" (click)="clear()">Limpiar</button>
+        </div>
+      </div>
+
+      <div class="filters-wrapper">
+        <div class="filter-group">
+          <label>Filtrar por Tipo</label>
+          <select [(ngModel)]="filters.type" (change)="doSearch()">
+            <option value="todos">Todos los Tipos</option>
+            <option value="pagina">Página</option>
+            <option value="seccion">Sección</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Filtrar por Sección</label>
+          <select [(ngModel)]="filters.section" (change)="doSearch()">
+            <option value="todas">Todas las Secciones</option>
+            <option *ngFor="let s of sections" [value]="s">{{ s }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="results-container">
+      <h2 style="font-weight: 900; margin-bottom: 30px; letter-spacing: -1px;">Resultados encontrados</h2>
+
+      <ng-container *ngIf="results$ | async as results">
+        <div *ngIf="results.length === 0" class="no-results">
+          <span>🔍</span>
+          <p style="font-size: 1.2rem; font-weight: 600;">No encontramos nada que coincida con tu búsqueda.</p>
+        </div>
+
+        <a *ngFor="let item of results" [routerLink]="item.path" class="result-item">
+          <div class="result-info">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+          <div class="result-badge">
+            {{ item.section }}
+          </div>
+        </a>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ====== CREATIVE GLOBAL SYSTEM ====== */
+:root {
+    --primary: #ed1c24;
+    --primary-dark: #cc0000;
+    --primary-soft: rgba(237, 28, 36, 0.15);
+    --accent: #ffffff;
+    /* White for dark mode text */
+    --bg-body: #0a0a0a;
+    /* Deep Black/Graphite */
+    --bg-card: #ffffff;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --radius-pill: 100px;
+    --radius-banner: 32px;
+    --radius-card: 28px;
+    --shadow-premium: 0 40px 100px -20px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-body);
+    background-image:
+        radial-gradient(at 0% 0%, hsla(355, 85%, 52%, 0.12) 0px, transparent 40%),
+        radial-gradient(at 100% 100%, hsla(0, 0%, 20%, 0.15) 0px, transparent 40%),
+        linear-gradient(135deg, #0e0e0e 0%, #050505 100%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    line-height: 1.4;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ====== COMPONENTES CREATIVOS (GLOBALES) ====== */
+
+.hero-wrapper {
+    background: transparent;
+    padding: 60px 20px 140px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, var(--bg-body));
+}
+
+.hero-banner {
+    flex: 1;
+    max-width: 1000px;
+    min-height: 400px;
+    background: linear-gradient(160deg, var(--primary) 0%, #a00000 100%);
+    border-radius: var(--radius-banner);
+    display: flex;
+    align-items: center;
+    padding: 60px;
+    color: white;
+    box-shadow: var(--shadow-premium);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.banner-ghost {
+    width: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-banner);
+    height: 380px;
+    align-self: center;
+    opacity: 0.6;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.banner-ghost::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    top: 0;
+    background: linear-gradient(to bottom, var(--primary-soft), transparent);
+}
+
+.hero-banner h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.hero-banner p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+/* Tarjeta que se superpone */
+.container {
+    max-width: 1200px;
+    margin: -80px auto 100px;
+    padding: 0 40px;
+    position: relative;
+    z-index: 10;
+}
+
+.creative-card {
+    background: #ffffff;
+    color: #000000;
+    /* Force dark text on white card */
+    border-radius: var(--radius-card);
+    padding: 80px;
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.6);
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.creative-card * {
+    color: #000000;
+    /* Ensure internal text remains dark */
+}
+
+.card-text {
+    flex: 1;
+}
+
+.card-visual {
+    flex: 1;
+    height: 400px;
+    background: #f8f8f8;
+    border-radius: var(--radius-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+}
+
+.card-text h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+/* Botones Creativos */
+.btn-pill {
+    background: #fff;
+    color: #000;
+    padding: 16px 40px;
+    border-radius: var(--radius-pill);
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.btn-pill:hover {
+    transform: scale(1.05);
+    background: #f0f0f0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline {
+    border: 3px solid #000;
+    padding: 14px 40px;
+    border-radius: var(--radius-pill);
+    font-weight: 800;
+    text-decoration: none;
+    color: #000;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* Animación */
+.animate-fade-in {
+    animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .creative-card {
+        flex-direction: column;
+        padding: 40px;
+    }
+
+    .hero-banner {
+        padding: 40px;
+    }
+
+    .banner-ghost {
+        display: none;
+    }
+
+    .container {
+        margin-top: -40px;
+    }
+}

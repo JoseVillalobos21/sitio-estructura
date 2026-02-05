@@ -1,0 +1,49 @@
+<header class="topbar">
+  <div class="brand"> Sitio-Estructura</div>
+  <nav class="menu">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-3d">
+      <div class="cube">
+        <span class="face front">Inicio</span>
+        <span class="face back">Principal</span>
+      </div>
+    </a>
+
+    <a routerLink="/breadcrumbs" routerLinkActive="active" class="nav-3d">
+      <div class="cube">
+        <span class="face front">Breadcrumbs</span>
+        <span class="face back">Migas</span>
+      </div>
+    </a>
+
+    <a routerLink="/elementos" routerLinkActive="active" class="nav-3d">
+      <div class="cube">
+        <span class="face front">Elementos</span>
+        <span class="face back">Componentes</span>
+      </div>
+    </a>
+
+    <a routerLink="/menu" routerLinkActive="active" class="nav-3d">
+      <div class="cube">
+        <span class="face front">Menú</span>
+        <span class="face back">Navegación</span>
+      </div>
+    </a>
+
+    <a routerLink="/mapa-sitio" routerLinkActive="active" class="nav-3d">
+      <div class="cube">
+        <span class="face front">Mapa</span>
+        <span class="face back">Sitio</span>
+      </div>
+    </a>
+  </nav>
+  <form (submit)="$event.preventDefault(); goSearch()">
+    <input placeholder="Explorar..." [(ngModel)]="quickQuery" name="quickQuery" />
+    <button type="submit">IR</button>
+  </form>
+</header>
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+<footer class="footer">
+  <small> Desarrollo web profesional &copy; 2026</small>
+</footer>
